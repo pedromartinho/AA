@@ -91,8 +91,19 @@ hold off
 
 % 3. On paper
 
-% 4.
+%% 4.
 
 lab = FitInfo.Lambda(51:100)
-I = eye(50)
-beta2a = inv(X'*X+lab')*X'*Y
+I = eye(4)
+[a,b]=size(lab)
+Beta3 = ones(4,b)
+SSE3 = ones(1,b)
+for i=1:b
+    column3 = (inv(X'*X+lab(i)*I)*X'*Y)'
+    Beta3(:,i) = column3
+end
+for i=1:b
+    f3 = X*Beta3(:,i)
+    y3 = sort(L3.Y)
+    SSE3(:,i) = sum((y3-f3).^2)
+end
