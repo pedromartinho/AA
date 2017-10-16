@@ -354,7 +354,7 @@ quad2
 %% clear data and init 4 rosen
 clear
 rosenini
-
+assdeact
 %% find the perfect parameters
 alfa = 0.6
 eta = 0.0272
@@ -363,11 +363,29 @@ eta_20 = eta*(1.2)
 eta_n10 = eta*(0.9)
 eta_n20 = eta*(0.8)
 rosen
-% 18 tentaivas
+% tries: 18 
+% Converged in 181 steps, f = 9.58156e-05
+%% 10%
+eta = eta_10
+rosen
+% Did not converge in 1000 steps, f = NaN
+%% 20%
+eta = eta_20
+rosen
+% Did not converge in 1000 steps, f = NaN
+%% -10%
+eta = eta_n10
+rosen
+% Did not converge in 1000 steps, f = NaN
+%% -20%
+eta = eta_n20
+rosen
+% Converged in 343 steps, f = 9.76905e-05
 
 % ---------------------------------------------------------------------------------------------------------
 
 %% activate adaptive step sizes
+rosenini
 assact
 
 %% alfa = 0 ; eta = 0.001
@@ -477,26 +495,67 @@ rosen
 %% alfa = 0.95 ; eta = 10
 eta = 10
 rosen
-% Converged in 124 steps, f = 6.99921e-05
+% Converged in 124 steps, f = 6.99921e-05it
 
 %% alfa = 0.99 ; eta = 0.001
 alfa = 0.99
 eta = 0.001
 rosen
-% 
+% Converged in 167 steps, f = 7.78166e-05
 %% alfa = 0.99 ; eta = 0.01
 eta = 0.01
 rosen
-% 
+% Converged in 165 steps, f = 5.70195e-05
 %% alfa = 0.99 ; eta = 0.1
 eta = 0.1
 rosen
-% 
+% Converged in 152 steps, f = 1.20916e-05
 %% alfa = 0.99 ; eta = 1
 eta = 1
 rosen
-% 
+% Converged in 173 steps, f = 8.64804e-05
 %% alfa = 0.99 ; eta = 10
 eta = 10
 rosen
-% 
+% Converged in 133 steps, f = 5.62055e-05
+
+% -----------------------------------------------------------------------------------------------
+
+%% clear all the data and prepare last exercise
+clear
+rosenini
+a = 100
+%% without adaptive step sizes
+assdeact
+alfa = 0.7
+eta = 0.027
+eta_10 = eta*1.1
+eta_n10 = eta*0.9
+rosen
+% tries: 10
+% Converged in 317 steps, f = 9.72555e-05
+%% 10%
+eta = eta_10
+rosen
+% Converged in 295 steps, f = 9.52142e-05
+%% -10%
+eta = eta_n10
+rosen
+% Converged in 352 steps, f = 9.78727e-05
+%% with adaptive step sizes
+assact
+alfa = 0.5
+eta = 0.001
+eta_10 = eta*1.1
+eta_n10 = eta*0.9
+rosen
+% tries: 2
+% Converged in 298 steps, f = 9.18124e-05
+%% 10%
+eta = eta_10
+rosen
+% Converged in 294 steps, f = 9.47177e-05
+%% -10%
+eta = eta_n10
+rosen
+% Converged in 296 steps, f = 9.65076e-05
