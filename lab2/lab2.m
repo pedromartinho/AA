@@ -31,6 +31,14 @@ quad1(a,eta)
 eta = 3
 quad1(a,eta)
 % Converged in 6 steps, f = 0.004944
+%% a = 0.5 -> Fastest 
+eta = 2
+quad1(a,eta)
+
+%% a = 0.5 -> Div 
+eta = 4
+quad1(a,eta)
+
 %% a = 1 ; eta =0.001
 a = 1
 eta = 0.001
@@ -60,6 +68,14 @@ quad1(a,eta)
 eta = 3
 quad1(a,eta)
 % Did not converge in 1000 steps, f = Inf
+%% a = 1 -> Fastest 
+eta = 1
+quad1(a,eta)
+
+%% a = 1 -> Div 
+eta = 2
+quad1(a,eta)
+
 %% a = 2 ; eta =0.001
 a = 2
 eta = 0.001
@@ -78,9 +94,9 @@ eta = 0.1
 quad1(a,eta)
 % Converged in 21 steps, f = 0.006891
 %% a = 2 ; eta =0.3
-erta = 0.3
+eta = 0.3
 quad1(a,eta)
-% Converged in 21 steps, f = 0.006891
+% Converged in 5 steps, f = 0.008493
 %% a = 2 ; eta =1
 eta = 1
 quad1(a,eta)
@@ -89,6 +105,14 @@ quad1(a,eta)
 eta = 3
 quad1(a,eta)
 % Did not converge in 1000 steps, f = NaN
+%% a = 2 -> Fastest 
+eta = 0.5
+quad1(a,eta)
+
+%% a = 2 -> Div 
+eta = 1
+quad1(a,eta)
+
 %% a = 5 ; eta =0.001
 a = 5
 eta = 0.001
@@ -107,20 +131,26 @@ eta = 0.1
 quad1(a,eta)
 % Converged in 8 steps, f = 0.003090
 %% a = 5 ; eta =0.3
-erta = 0.3
+eta = 0.3
 quad1(a,eta)
 % Converged in 8 steps, f = 0.003090
-%% a = 2 ; eta =1
+%% a = 5 ; eta =1
 eta = 1
 quad1(a,eta)
 % Did not converge in 1000 steps, f = NaN
-%% a = 2 ; eta =3
+%% a = 5 ; eta =3
 eta = 3
 quad1(a,eta)
-% Não sei o que quer dizer
+% Did not converge in 1000 steps, f = NaN
+%% a = 5 -> Fastest 
+eta = 0.2
+quad1(a,eta)
+
+%% a = 5 -> Div 
+eta = 0.4
+quad1(a,eta)
 
 % -------------------------------------------------------------------------------------------
-
 
 %% clear the previous data and 2.2 init
 clear
@@ -151,6 +181,14 @@ quad2
 eta = 3
 quad2
 % Did not converge in 1000 steps, f = NaN
+%% a = 2 -> Fastest 
+eta = 0.666
+quad2
+
+%% a = 2 -> Div 
+eta = 1
+quad2
+
 %% a = 20 ; eta = 0.01
 a = 20
 eta = 0.01
@@ -175,6 +213,13 @@ quad2
 % Did not converge in 1000 steps, f = NaN
 %% a = 20 ; eta = 3
 eta = 3
+quad2
+%% a = 20 -> Fastest 
+eta = 0.0952
+quad2
+
+%% a = 20 -> Div 
+eta = 0.1
 quad2
 % Did not converge in 1000 steps, f = NaN
 
@@ -218,6 +263,10 @@ quad2
 eta = 10
 quad2
 % Did not converge in 1000 steps, f = NaN
+%% alfa = 0 -> Div
+eta = 0.1
+quad2
+
 %% alfa = 0.5 ; eta = 0.003
 alfa = 0.5
 eta = 0.003
@@ -249,6 +298,9 @@ quad2
 % Did not converge in 1000 steps, f = NaN
 %% alfa = 0.5 ; eta = 10
 eta = 10
+quad2
+%% alfa = 0.5 -> Div
+eta = 0.3
 quad2
 % Did not converge in 1000 steps, f = NaN
 %% alfa = 0.7 ; eta = 0.003
@@ -282,6 +334,9 @@ quad2
 % Did not converge in 1000 steps, f = NaN
 %% alfa = 0.7 ; eta = 10
 eta = 10
+quad2
+%% alfa = 0.7 -> Div
+eta = 0.567
 quad2
 % Did not converge in 1000 steps, f = NaN
 %% alfa = 0.9 ; eta = 0.003
@@ -317,6 +372,10 @@ quad2
 eta = 10
 quad2
 % Did not converge in 1000 steps, f = NaN
+%% alfa = 0.9 -> Div
+eta = 1.9
+quad2
+
 %% alfa = 0.95 ; eta = 0.003
 alfa = 0.95
 eta = 0.003
@@ -350,21 +409,24 @@ quad2
 eta = 10
 quad2
 % Did not converge in 1000 steps, f = NaN
+%% alfa = 0.95 -> Div
+eta = 3.9
+quad2
 
 %% clear data and init 4 rosen
 clear
 rosenini
 assdeact
 %% find the perfect parameters
-alfa = 0.6
+alfa = 0.599
 eta = 0.0272
 eta_10 = eta*(1.1)
 eta_20 = eta*(1.2)
 eta_n10 = eta*(0.9)
 eta_n20 = eta*(0.8)
 rosen
-% tries: 18 
-% Converged in 181 steps, f = 9.58156e-05
+% tries: 30 
+% Converged in 89 steps, f = 9.61742e-05
 %% 10%
 eta = eta_10
 rosen
@@ -380,7 +442,7 @@ rosen
 %% -20%
 eta = eta_n20
 rosen
-% Converged in 343 steps, f = 9.76905e-05
+% Converged in 344 steps, f = 9.7686e-05
 
 % ---------------------------------------------------------------------------------------------------------
 
@@ -527,35 +589,35 @@ rosenini
 a = 100
 %% without adaptive step sizes
 assdeact
-alfa = 0.7
-eta = 0.027
+alfa = 0.9706
+eta = 0.0024
 eta_10 = eta*1.1
 eta_n10 = eta*0.9
 rosen
-% tries: 10
-% Converged in 317 steps, f = 9.72555e-05
+% tries: 35
+% Converged in 344 steps, f = 2.72858e-05
 %% 10%
 eta = eta_10
 rosen
-% Converged in 295 steps, f = 9.52142e-05
+% Did not converge in 1000 steps, f = 0.00218895
 %% -10%
 eta = eta_n10
 rosen
-% Converged in 352 steps, f = 9.78727e-05
+% Did not converge in 1000 steps, f = 0.00244725
 %% with adaptive step sizes
 assact
-alfa = 0.5
+alfa = 0.9965
 eta = 0.001
 eta_10 = eta*1.1
 eta_n10 = eta*0.9
 rosen
-% tries: 2
-% Converged in 298 steps, f = 9.18124e-05
+% tries: 37
+% Converged in 308 steps, f = 8.4158e-05
 %% 10%
 eta = eta_10
 rosen
-% Converged in 294 steps, f = 9.47177e-05
+% Converged in 387 steps, f = 8.56219e-05
 %% -10%
 eta = eta_n10
 rosen
-% Converged in 296 steps, f = 9.65076e-05
+% Converged in 323 steps, f = 8.8316e-05
